@@ -2,8 +2,9 @@ import express from "express"
 import { createServer, Server as HttpServer } from "http";
 import { Server as SocketIOServer } from "socket.io";
 import cors from "cors";
-import { dbConnection } from "./Config/Database";
+import { dbConnection } from "./config/Database";
 import helmet from "helmet";
+import userRoutes from "./modules/user/user.routes"
 
 export default class Server {
     private path: { user: string };
@@ -21,6 +22,7 @@ export default class Server {
 
         this.connectDB();
         this.middlewares();
+        this.routes()
     }
 
     async connectDB() {
@@ -40,7 +42,7 @@ export default class Server {
     }
 
     private routes() {
-        this.app.use(this.path.user, require("./Modules/User/user.routes"));
+        this.app.use(this.path.user, userRoutes);
     }
 
 }

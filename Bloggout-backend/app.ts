@@ -1,7 +1,8 @@
 import dotenv from "dotenv"
-import Server from "./src/Server";
+import path from "path";
+import Server from "./src/server";
 
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, "../.env") })
 
 const server = new Server();
 
