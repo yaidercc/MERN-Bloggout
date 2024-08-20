@@ -4,6 +4,8 @@ import userControllers from "./user.controllers"
 import validateFields from "../../middlewares/validateFields";
 const router = Router();
 
+
+
 router.post("/createUser",[
     check("names","Los nombres son incorrectos")
     .trim()
@@ -20,9 +22,6 @@ router.post("/createUser",[
     .escape()
     .not().isEmpty()
     .withMessage("El nombre de usuario no puede estar vacio"),
-    check("email","El correo es incorrecto")
-    .isEmail()
-    .normalizeEmail(),
     check("password","La clave es incorrecta")
     .isLength({min: 8})
     .withMessage("La clave debe tener como minimo 8 caracteres")
@@ -30,6 +29,12 @@ router.post("/createUser",[
     .matches("[A-Z]").withMessage("La clave debe tener por lo menos una mayuscula"),
     validateFields
 ],userControllers.createUser )
+
+router.post("/login",
+    [
+
+    ],userControllers.login
+)
 
 
 export default router

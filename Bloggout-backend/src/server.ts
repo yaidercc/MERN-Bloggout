@@ -2,8 +2,9 @@ import express from "express"
 import { createServer, Server as HttpServer } from "http";
 import { Server as SocketIOServer } from "socket.io";
 import cors from "cors";
-import { dbConnection } from "./config/Database";
 import helmet from "helmet";
+import { } from "passport"
+import { dbConnection } from "./config/Database";
 import userRoutes from "./modules/user/user.routes"
 
 export default class Server {
@@ -33,6 +34,7 @@ export default class Server {
         this.app.use(cors())
         this.app.use(express.json())
         this.app.use(helmet())
+        this.app.use()
     }
 
     listen() {
