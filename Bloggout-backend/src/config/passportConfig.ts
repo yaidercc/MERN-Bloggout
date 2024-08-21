@@ -1,11 +1,10 @@
 import passport from "passport";
 import passportLocal from "passport-local";
 import passportJWT from "passport-jwt";
-import UserModel from "@/modules/user/user.model";
-import { User } from "@/modules/user/interaces";
+import UserModel from "../modules/user/user.model";
 import bcryptjs from "bcryptjs";
 
-const JWTSecret = process.env.JWT_SECRET;
+const JWTSecret: string = process.env.JWT_SECRET || "31iuhiu3h12i3yh1098";
 const LocalStrategy = passportLocal.Strategy;
 const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
@@ -33,3 +32,4 @@ passport.use(
         }
     )
 )
+

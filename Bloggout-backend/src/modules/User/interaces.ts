@@ -3,10 +3,3 @@ export interface userControllersInterface {
     editUser: (req: Request, res: Response) => Promise<void>,
     deleteUser: (req: Request, res: Response) => Promise<void>,
 }
-
-export interface User {
-    names: string;
-    last_names: string;
-    username: string;
-    password: string;
-}

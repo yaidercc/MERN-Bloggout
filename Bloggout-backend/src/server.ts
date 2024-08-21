@@ -2,10 +2,9 @@ import express from "express"
 import { createServer, Server as HttpServer } from "http";
 import { Server as SocketIOServer } from "socket.io";
 import cors from "cors";
-import helmet from "helmet";
-import { } from "passport"
+import helmet from "helmet"; 
 import { dbConnection } from "./config/Database";
-import userRoutes from "./modules/user/user.routes"
+import {UserRoutes} from "./modules/user/user.routes"
 
 export default class Server {
     private path: { user: string };
@@ -34,7 +33,6 @@ export default class Server {
         this.app.use(cors())
         this.app.use(express.json())
         this.app.use(helmet())
-        this.app.use()
     }
 
     listen() {
@@ -44,7 +42,7 @@ export default class Server {
     }
 
     private routes() {
-        this.app.use(this.path.user, userRoutes);
+        this.app.use(this.path.user, new UserRoutes().router);
     }
 
 }
